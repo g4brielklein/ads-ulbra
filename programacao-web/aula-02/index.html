@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Formulário da aula 2</title>
+        <style>
+            body {
+                background-color: #3b5998;
+                color: white;
+                font-size: 20px;
+                line-height: 30px;
+            }
+            form {
+                background-color: rgba(0, 0, 0, 0.2);
+                max-width: 400px;
+                margin: 40px auto;
+                padding: 30px;
+                font-size: 20px;
+                line-height: 30px;
+                color: white;
+            }
+            header h1 {
+                text-align: center;
+                font-size: 30px;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <!-- inicio do form -->
+
+        <header>
+            <h1>Cadastro de Clientes</h1>
+        </header>
+
+        <form method="post" action="mailto:gabrielkleinribas@gmail.com">
+            <input type="hidden" name="AnyFormMode" value="mail">
+            <input type="hidden" name="AnyFormDisplay" value="standard">
+            <input type="hidden" name="AnyFormTo" value=" nome@provedor.com.br ">
+            <input type="hidden" name="AnyFormSubject" value="Dados dos Clientes">
+
+            <b>Nome: </b>
+            <input type="text" name="nome" size="30" maxlength="30"> <br>
+
+            <b>Digite o seu email: </b>
+            <input type="text" name="anyformfrom" size="30"> <br>
+
+            <b>Senha do email: </b>
+            <input type="password" name="senha" size="5" maxlength="30"> <br>
+            
+
+            <b>Sexo:</b>
+            <br>
+            <input type="radio" name="sexo"> Masculino <br>
+            <input type="radio" name="sexo"> Feminino <b>
+            <br>
+            Produtos Comprados:</b><br>
+            <input type="checkbox" name="computador"> Computador <br>
+            <input type="checkbox" name="impressora"> Impressora <br>
+            <input type="checkbox" name="monitor"> Monitor <br>
+            <input type="checkbox" name="teclado"> Teclado <br> <br>
+            <b> Estado: </b>
+            <select name="listagem" selected="">
+            <option size="3"> AM </option>
+            <option> MG </option>
+            <option> RS </option>
+            <option> RJ </option>
+            <option> SP </option>
+            </select>
+            <br> <br>
+            <b> Histórico do Cliente: </b><br>
+            <textarea name="observacao" cols="30" rows="3"> </textarea> <br>
+            <br>
+            <input type="file" name="Procurar" value="Procurar">
+            <input type="submit" value="Enviar Informações">
+            <input type="reset" value="Limpar"> <br>
+            
+        </form>
+
+        <!-- final do form -->
+            
+    </body>
+</html>
