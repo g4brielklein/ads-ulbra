@@ -1,0 +1,38 @@
+* {
+    padding: 0;
+    border: 0;
+    margin: 0;
+}
+
+h1 {
+    text-align: center;
+    padding: 20px;
+}
+
+h2 {
+    font-size: 20px;
+    padding: 20px;
+}
+
+p {
+    font-size: 15px;
+    padding-bottom: 20px;
+    margin-left: 60px;
+}
+
+.sessao {
+    margin-bottom: 100px;
+}
+
+.cafe {
+    margin-top: 100px;
+    margin-left: -20px;
+    max-width: 400px;
+}
+
+.imagem img {
+    width: 300px;
+    
+    margin-left: 400px;
+    margin-top: -200px;
+}

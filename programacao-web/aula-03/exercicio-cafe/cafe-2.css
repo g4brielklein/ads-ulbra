@@ -1,0 +1,15 @@
+.lista {
+    width: 280px;
+    border: 2px solid black;
+}
+
+.lista2 {
+    margin-top: 15px;
+    height: 200px;
+    border: 2px solid black;
+}
+
+.listas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
