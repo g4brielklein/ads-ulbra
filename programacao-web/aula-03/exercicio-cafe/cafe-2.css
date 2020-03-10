@@ -1,15 +1,51 @@
-.lista {
+
+.listas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.lista1 {
+    margin-top: 15px;
+    margin-left: 400px;
     width: 280px;
     border: 2px solid black;
 }
 
 .lista2 {
-    margin-top: 15px;
+    margin-top: 30px;
+    width: 280px;
     height: 200px;
     border: 2px solid black;
 }
 
-.listas {
+.bottom {
+    margin-left: 500px;
+    margin-top: 50px;
     display: grid;
     grid-template-columns: 1fr 1fr;
+}
+
+.bottom img {
+    width: 300px;
+}
+
+.bottom p {
+    max-width: 300px;
+}
+
+.image1 img {
+    width: 330px;
+}
+
+.texto1 {
+    margin-top: -30px;
+    margin-left: -80px;
+}
+
+.texto2 {
+    margin-left: 100px;
+}
+
+.image2 img {
+    margin-left: -50px
 }

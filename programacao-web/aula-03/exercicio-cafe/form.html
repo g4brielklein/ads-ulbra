@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Formulário</title>
+        <link rel="stylesheet" href="form-styles.css">
+    </head>
+    <body>
+        <div class="main">
+        <header>
+        <h1>Clientes</h1>
+        <div class="menu">
+            <a href="#">Dados do Cliente</a>
+            <a class="white" href="#">Obervações</a>
+        </div>
+        </header>
+
+        <form>
+            <div class="campos">
+            
+            <div class="campo">
+            <p>Status Cliente</p><br>
+            <input type="radio" id="ativo" name="status" value="ativo">
+            <label for="ativo">ATIVO</label>
+            <input type="radio" id="inativo" name="status" value="inativo">
+            <label for="inativo">INATIVO</label>
+            </div>
+
+            <div class="campo">
+            <p>Tipo Pessoa</p><br>
+            <input type="radio" id="fisica" name="pessoa" value="fisica">
+            <label for="fisica">Fisica</label>
+            <input type="radio" id="juridica" name="pessoa" value="juridica">
+            <label for="juridica">Juridica</label>
+            </div>
+
+            <div class="campo">
+            <p>CPF/CNPJ</p><br>
+            <input type="text" size="47">
+            </div>
+
+            <div class="campo">
+                <p>Nome</p>
+                <input type="text" size="47">
+            </div>
+
+            <div class="campo">
+                <p>Email</p>
+                <input type="email" size="47">
+            </div>
+
+            <div class="campo">
+                <p>Telefone</p>
+                <input type="text" size="47">
+            </div>
+            </div>
+            <div class="campo-maior">
+                <div class="campo">
+                    <p>Origem</p>
+                    <select>
+                        <option>Selecione...</option>
+                    </select>
+                </div>
+
+                <div class="campo">
+                    <p>Cep</p>
+                    <input type="text" size="34">
+                </div>
+
+                <div class="campo">
+                    <p>Uf</p>
+                    <select>
+                        <option>Selecione...</option>
+                        <option>RS</option>
+                    </select>
+                </div>
+
+                <div class="campo">
+                    <p>Cidade</p>
+                    <select>
+                        <option>Selecione...</option>
+                        <option>Sapucaia do Sul</option>
+                    </select>
+                </div>
+            </div>
+            <div class="campos">
+                <div class="campo">
+                    <p>Endereço</p>
+                    <input type="text" size="47">
+                </div>
+                <div class="campo">
+                    <p>Número</p>
+                    <input type="text" size="47">
+                </div>
+                <div class="campo">
+                    <p>Bairro</p>
+                    <input type="text" size="47">
+                </div>
+            </div>
+
+        </form>
+
+        <footer>
+            <a href="#">Salvar</a>
+        </footer>
+        </div>
+    </body>
+</html>
