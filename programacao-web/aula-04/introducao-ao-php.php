@@ -13,9 +13,7 @@
 		<h2>Tipos de dados em PHP</h2>
 		<p>Verificar se o WampServer está instalado na máquina e os serviços ativos</p>
 		<h2>http://localhost</h2>
-		
 		<hr>
-		
 		<h2>Ler material de aula.</h2>
 		<h2>Assistir ao vídeo inicial</h2>
 	</body>
