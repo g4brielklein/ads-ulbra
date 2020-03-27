@@ -1,2 +1,2 @@
-# ads-ulbra
-Análise e Desenvolvimento de Sistemas - ULBRA
+# Análise e Desenvolvimento de Sistemas - ULBRA
+Repositórios do curso de ADS da Ulbra Canoas. 
