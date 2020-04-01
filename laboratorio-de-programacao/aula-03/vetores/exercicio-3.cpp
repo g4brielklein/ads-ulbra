@@ -25,6 +25,7 @@ main() {
        
        printf("\n O maior valor digitado foi: %d na posicao %d", maior, pmaior);
        printf("\n Menor: %d na posicao %d", menor, pmenor); 
+       
        getch();
 }
      
