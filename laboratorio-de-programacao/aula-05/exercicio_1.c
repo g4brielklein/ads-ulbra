@@ -5,5 +5,6 @@ int main() {
     printf("Enter a string: ");
     gets(String);
     printf("%s", string);
+    
     return 0;
 }
