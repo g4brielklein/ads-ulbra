@@ -8,7 +8,7 @@ struct student {
 
 int main() {
 	setlocale(LC_ALL, "portuguese");
-	printf("Preencha as informações: \n");
+	printf("Preencha as informaï¿½ï¿½es: \n");
 	printf("Digite o nome: ");
 	fflush(stdin);
 	gets(student.name);
@@ -36,11 +36,12 @@ int main() {
 	printf("Digite a cidade: ");
 	fflush(stdin);
 	gets(student.city);
-	printf("Digite o endereço: ");
+	printf("Digite o endereï¿½o: ");
 	fflush(stdin);
 	gets(student.address);
 	
-	printf("\nExibindo os dados:\nNome: %s\nCGU: %d\nCurso: %s\nIdade: %d anos\nSexo: %c\nEmail: %s\nTelefone: %s\nCelular: %s\nCidade: %s\nEndereço: %s\n", 
+	printf("\nExibindo os dados:\nNome: %s\nCGU: %d\nCurso: %s\nIdade: %d anos\nSexo: %c\nEmail: %s\nTelefone: %s\nCelular: %s\nCidade: %s\nEndereï¿½o: %s\n", 
 	student.name, student.CGU, student.course, student.age, student.genre, student.email, student.phone, student.cellphone, student.city, student.address);
+	
 	return 0;
 }

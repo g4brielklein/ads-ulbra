@@ -10,7 +10,7 @@ struct student {
 int main() {
 	int i;
 	setlocale(LC_ALL, "portuguese");
-	printf("Preencha as informações: \n");
+	printf("Preencha as informaï¿½ï¿½es: \n");
 	for (i=0; i < size; i++) {
 		printf("\nDigite o nome: ");
 		fflush(stdin);
@@ -39,14 +39,15 @@ int main() {
 		printf("Digite a cidade: ");
 		fflush(stdin);
 		gets(class[i].city);
-		printf("Digite o endereço: ");
+		printf("Digite o endereï¿½o: ");
 		fflush(stdin);
 		gets(class[i].address);
 	}
 	
 	printf("\nExibindo os dados:\n");
+	
 	for(i=0;i < size; i++) {
-		printf("\nNome: %s\nCGU: %d\nCurso: %s\nIdade: %d anos\nSexo: %c\nEmail: %s\nTelefone: %s\nCelular: %s\nCidade: %s\nEndereço: %s\n", 
+		printf("\nNome: %s\nCGU: %d\nCurso: %s\nIdade: %d anos\nSexo: %c\nEmail: %s\nTelefone: %s\nCelular: %s\nCidade: %s\nEndereï¿½o: %s\n", 
 		class[i].name, class[i].CGU, class[i].course, class[i].age, class[i].genre, class[i].email, class[i].phone, class[i].cellphone, class[i].city, class[i].address);
 	}
 	
