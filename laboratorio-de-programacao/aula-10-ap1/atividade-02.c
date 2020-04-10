@@ -4,7 +4,7 @@
 
 struct aluno {
 	char nome[30];
-	double nota_g1, nota_g2;
+	double g1, g2, media;
 	int qtd_presenca;
 }turma[size];
 
@@ -18,17 +18,21 @@ main() {
 		gets(turma[i].nome);
 		printf("Digite a nota da G1: ");
 		fflush(stdin);
-		scanf("%lf", &turma[i].nota_g1);
+		scanf("%lf", &turma[i].g1);
 		printf("Digite a nota da G2: ");
 		fflush(stdin);
-		scanf("%lf", &turma[i].nota_g2);
+		scanf("%lf", &turma[i].g2);
 		printf("Digite a quantidade de presenças: ");
 		fflush(stdin);
 		scanf("%d", &turma[i].qtd_presenca);
 	}
 	
+	for (i=0;i<size;i++) {
+		turma[i].media = (turma[i].g1 + turma[i].g2) / 2;
+	}
+	
 	for(i=0;i<size;i++) {
-		printf("\nNome: %s\nNota da G1: %.20lf\nNota da G2: %.20lf\nQuantidade de presenças: %d\n", 
-		turma[i].nome, turma[i].nota_g1, turma[i].nota_g2, turma[i].qtd_presenca);
+		printf("\nNome: %s\nNota da G1: %.1lf\nNota da G2: %.1lf\nQuantidade de presenças: %d\nMédia: %.1lf\n", 
+		turma[i].nome, turma[i].g1, turma[i].g2, turma[i].qtd_presenca, turma[i].media);
 	}
 }
