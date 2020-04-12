@@ -1,5 +1,5 @@
 #include <stdio.h>
-#define size 3
+#define size 30
 
 struct aluno {
 	int ativo;
@@ -11,6 +11,8 @@ struct aluno {
 
 main() {
 	int i;
+	int total_alunos = 0;
+	double soma_medias, media_turma;
 	
 	for (i=0;i<size;i++) {
 		turma[i].ativo = 0;
@@ -50,6 +52,14 @@ main() {
 								printf("Digite a quantidade de presencas: ");
 								fflush(stdin);
 								scanf("%d", &turma[i].qtd_presenca);
+								turma[i].media = (turma[i].g1 + turma[i].g2) / 2;
+								if (turma[i].media >= 6.0 && turma[i].qtd_presenca >= 51) {
+									turma[i].aprovado = 1;
+								} else {
+									turma[i].aprovado = 0;
+								}
+								total_alunos++;
+								soma_medias = soma_medias + turma[i].media;
 								break;
 							};
 							if (i==size)
@@ -61,8 +71,8 @@ main() {
 						printf("\nListar todos os alunos\n");
 							for(i=0;i<size;i++) {
 								if(turma[i].ativo == 1) {
-									printf("\nNome: %s\nNota da G1: %.1lf\nNota da G2: %.1lf\nMedia final: %.1lf\nPresencas: %d\n", 
-									turma[i].nome, turma[i].g1, turma[i].g2, turma[i].media, turma[i].qtd_presenca);
+									printf("\nNome: %s\nNota da G1: %.1lf\nNota da G2: %.1lf\nMedia final: %.1lf\nPresencas: %d\nAprovado: %d\n", 
+									turma[i].nome, turma[i].g1, turma[i].g2, turma[i].media, turma[i].qtd_presenca, turma[i].aprovado);
 								}
 							}
 						printf("\nPressione qualquer tecla para voltar ao menu");
@@ -70,24 +80,46 @@ main() {
 						break;
 			case 'C':	system("cls");
 						printf("\nAlunos em substituicao\n");
+							for(i=0;i<size;i++) {
+								if (turma[i].ativo == 1)
+									if (turma[i].media < 6.0) {
+										printf("\nNome: %s\nNota da G1: %.1lf\nNota da G2: %.1lf\nMedia final: %.1lf\nPresencas: %d\nAprovado: %d\n", 
+										turma[i].nome, turma[i].g1, turma[i].g2, turma[i].media, turma[i].qtd_presenca, turma[i].aprovado);
+									}
+							}
 						printf("\nPressione qualquer tecla para voltar ao menu");
 						getch();
 						break;
 			case 'D':	system("cls");
 						printf("\nAlunos reprovados por falta\n");
+							for (i=0;i<size;i++) {
+								if (turma[i].ativo == 1)
+									if (turma[i].qtd_presenca < 51)
+										printf("\nNome: %s\nNota da G1: %.1lf\nNota da G2: %.1lf\nMedia final: %.1lf\nPresencas: %d\nAprovado: %d\n", 
+										turma[i].nome, turma[i].g1, turma[i].g2, turma[i].media, turma[i].qtd_presenca, turma[i].aprovado);
+							}
 						printf("\nPressione qualquer tecla para voltar ao menu");
 						getch();
 						break;
 			case 'E':	system("cls");
 						printf("\nAlunos com nota superior a 6,0, mas com presenca inferior a 75 porcento\n");
+							for (i=0;i<size;i++) {
+								if (turma[i].ativo == 1)
+									if (turma[i].media >= 6.0 && turma[i].qtd_presenca < 51)
+										printf("\nNome: %s\nNota da G1: %.1lf\nNota da G2: %.1lf\nMedia final: %.1lf\nPresencas: %d\nAprovado: %d\n", 
+										turma[i].nome, turma[i].g1, turma[i].g2, turma[i].media, turma[i].qtd_presenca, turma[i].aprovado);
+							}
 						printf("\nPressione qualquer tecla para voltar ao menu");
 						getch();
 						break;
 			case 'F':	system("cls");
 						printf("\nMedia da turma\n");
 							for(i=0;i<size;i++) {
-									
+								if (turma[i].ativo == 1) {
+									media_turma = (soma_medias / total_alunos); 	
+								}
 							}
+							printf("\nMedia da turma: %.1lf\n", media_turma);
 						printf("\nPressione qualquer tecla para voltar ao menu");
 						getch();
 						break;
@@ -97,25 +129,6 @@ main() {
 			default:	printf("\nOpcao invalida!\n");
 						printf("\nPressione qualquer tecla para voltar ao menu");
 						getch();
-		}
-		
+		}		
 	} while (Menu!='G');
-	
-	
-	for (i=0;i<size;i++) {
-		turma[i].media = (turma[i].g1 + turma[i].g2) / 2;
-	}
-	
-	for (i=0;i<size;i++) {
-		if (turma[i].media >= 6.0 && turma[i].qtd_presenca >= 51) {
-			turma[i].aprovado = 1;
-		} else {
-			turma[i].aprovado = 0;
-		}
-	}
-	
-	for(i=0;i<size;i++) {
-		printf("\nNome: %s\nNota da G1: %.1lf\nNota da G2: %.1lf\nQuantidade de presencas: %d\nMedia: %.1lf\nAprovado: %d\n", 
-		turma[i].nome, turma[i].g1, turma[i].g2, turma[i].qtd_presenca, turma[i].media, turma[i].aprovado);
-	}
 }
