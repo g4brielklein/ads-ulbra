@@ -4,10 +4,10 @@ $servidor = '192.168.64.2';
 $user = 'root';
 $senha = '';
 $banco = 'ulbra';
-$TAB = '$nbsp;&nbsp;&nbsp;&nbsp;';
+$TAB = '&nbsp;&nbsp;&nbsp;&nbsp;';
 
 $connect = mysqli_connect($servidor, $user, $senha);
-$db = mysqli_select_db($conect, $banco);
+$db = mysqli_select_db($connect, $banco);
 
 $query_select = 'SELECT * FROM aluno';
 $select = mysql_query($connect, $query_select);
