@@ -24,7 +24,7 @@
 
         </style>
     </body>
-        <h1>Dados do Banco</h1>
+        <h1>Database</h1>
         <div id="banco">
             <?php
 
