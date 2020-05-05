@@ -1,3 +1,5 @@
+<!-- Página para editar dados do banco -->
+
 <a href="editar.php?cgu=<?php echo $row["cgu"]; ?>" class="link">
 
 <?php
