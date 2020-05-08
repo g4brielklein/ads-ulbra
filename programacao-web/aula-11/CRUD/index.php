@@ -1,66 +1,74 @@
-<!-- Página inicial da aplicação -->
+<!DOCTYPE html>
+<html lang="pt-br">
 
-<!-- Confirma a exclusão de um registro -->
-<script>
-    function Confirmadel() {
-        var del = confirm('Você confirma a exclusão?')
-        if (del == true) {
-            alert('Registro excluído!')
-        }
-        return del;
-    }
-</script>
+<head>
+    <meta charset="utf-8">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <title>CRUD - Gabriel Klein</title>
+</head>
 
-<!-- Lê as informações para a página -->
-<?php
-    require_once('db.php');
+<body>
+        <div class="container">
+          <div class="jumbotron">
+            <div class="row">
+                <h2>CRUD em PHP <span class="badge badge-secondary">v 1.0 Gabriel Klein</span></h2>
+            </div>
+          </div>
+            </br>
+            <div class="row">
+                <p>
+                    <a href="create.php" class="btn btn-success">Adicionar</a>
+                </p>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Endereço</th>
+                            <th scope="col">CGU</th>
+                            <th scope="col">CPF</th>
+                            <th scope="col">Idade</th>
+                            <th scope="col">Altura</th>
+                            <th scope="col">Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        include 'banco.php';
+                        $pdo = Banco::conectar();
+                        $sql = 'SELECT * FROM aluno ORDER BY id DESC';
 
-    $query_select = 'SELECT * FROM aluno';
-    $select = mysqli_query($conect, $query_select);  
-?>
+                        foreach($pdo->query($sql)as $row)
+                        {
+                            echo '<tr>';
+			                echo '<th scope="row">'. $row['id'] . '</th>';
+                            echo '<td>'. $row['nome'] . '</td>';
+                            echo '<td>'. $row['endereco'] . '</td>';
+                            echo '<td>'. $row['cgu'] . '</td>';
+                            echo '<td>'. $row['cpf'] . '</td>';
+                            echo '<td>'. $row['idade'] . '</td>';
+                            echo '<td>'. $row['altura'] . '</td>';
+                            
+                            echo '<td width=250>';
+                            echo '<a class="btn btn-primary" href="read.php?id='.$row['id'].'">Info</a>';
+                            echo ' ';
+                            echo '<a class="btn btn-warning" href="update.php?id='.$row['id'].'">Atualizar</a>';
+                            echo ' ';
+                            echo '<a class="btn btn-danger" href="delete.php?id='.$row['id'].'">Excluir</a>';
+                            echo '</td>';
+                            echo '</tr>';
+                        }
+                        Banco::desconectar();
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="assets/js/bootstrap.min.js"></script>
+</body>
 
-<html>
-    <head>
-        <title>Lista de Alunos</title>
-        <link rel='stylesheet' type='text/css' href='styles.css' />
-    </head>
-    <body>
-        <form name='frmUser' method='post' action=''>
-            <div style='width: 500px;'>
-            <div align='right' style='padding-bottom: 5px;'>
-            <a href='adicionar.php' class='link'>
-            <img alt='Add' title='Add' src='images/add.png' width='15px' height='15px' />Incluir</a></div>
-                <table border='0' cellpadding='10' cellspacing='1' width='500' class='tbListForm'>
-                <tr class='listheader'>
-                    <td>Nome</td>
-                    <td>CGU</td>
-                    <td width='20%'>Opções</td>
-                </tr>
-                <?php
-                    $i = 0;
-                    while ($row = mysqli_fetch_array($select)) {
-                        if ($i % 2 == 0)
-                            $classname = 'evenRow';
-                        else
-                            $classname = 'OddRow';
-                ?>
-
-                <tr class='<?php if(isset($classname))echo $classname;?>'>
-                    <td><?php echo $row['nome']; ?></td>
-                    <td><?php echo $row['cgu'] ?></td>
-                    
-                    <a href='editar.php?cgu=<?php echo $row['cgu']; ?>' class='link'>
-                    <img alt='Edit' title='Edit' src='images/editar.png' width='15px' height='15px' hspace='10' /></a>
-
-                    <a href='excluir.php?cgu=<?php echo $row['cgu']; ?>' class='link'>
-                    <img alt='Delete' title='Delete' src='images/excluir.png' width='15px' height='15px' hspace='10' onclick='return Confirmadel()' /></a></td>
-                </tr>
-
-                <?php
-                    $i++;
-                    }
-                ?>
-            </table>
-        </form>
-    </body>
 </html>
