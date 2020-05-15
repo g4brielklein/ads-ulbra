@@ -29,7 +29,7 @@
         <meta charset="utf-8">
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-        <title>Informações do Aluno</title>
+        <title>Informações</title>
     </head>
 
     <body>
