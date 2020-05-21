@@ -5,5 +5,14 @@
 }
 
 body {
-    background-color: #3b5998;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+form {
+    border: 1px solid black;
+    width: 600px;
+    height: 300px;
+    background-color: white;
+    margin: 200px auto;
+    padding: 20px;
 }
