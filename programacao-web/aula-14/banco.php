@@ -4,7 +4,7 @@ class Banco
 {
     private static $dbNome = 'AdmVendas';
     private static $dbHost = 'localhost';
-    private static $dbUsuario = 'root';
+    private static $dbUsuario = '';
     private static $dbSenha = '';
     
     private static $cont = null;
