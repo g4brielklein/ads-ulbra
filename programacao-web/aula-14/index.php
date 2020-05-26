@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 
 <head>
     <meta charset="utf-8">
-    <title>AdmVendas</title>
+    <title>Adm Vendas</title>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 </head>
 
@@ -11,7 +11,7 @@
         <div class="container">
           <div class="jumbotron">
             <div class="row">
-                <h2>AdmVendas<span class="badge badge-secondary"></span></h2>
+                <h2>Adm Vendas<span class="badge badge-secondary"></span></h2>
             </div>
           </div>
             </br>
