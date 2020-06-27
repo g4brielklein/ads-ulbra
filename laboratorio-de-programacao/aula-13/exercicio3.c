@@ -15,10 +15,10 @@ Exemplo 01  String 1: contar            Exemplo 02  String 1: livro
 #include <string.h>
 #define tam 20
 
-int LerNomes(char *n1, char *n2) {
-    printf("\nDigite o nome: ");
+void LerNomes(char *n1, char *n2) {
+    printf("\nDigite o primeiro nome: ");
     gets(n1);
-    printf("\nDigite o sobrenome: ");
+    printf("\nDigite o segundo nome: ");
     gets(n2);
 }
 
@@ -27,15 +27,16 @@ int ComparaNomes(char *n1, char *n2) {
     status= strcmp(n1, n2);
 
     if(status==0) {
-        status = -1;
+        return -1;
     } else {
         return strspn(n1, n2);
     }
 }
 
-main() {
-    char nome[tam], sobrenome[tam];
-    LerNomes(nome, sobrenome);
-    printf("\n%s %s\n\n", nome, sobrenome);
-    printf("\n%d\n\n", ComparaNomes(nome, sobrenome));
+int main() {
+    char nome1[tam], nome2[tam];
+    LerNomes(nome1, nome2);
+    printf("\n%s - %s\n", nome1, nome2);
+    printf("\n%d\n\n", ComparaNomes(nome1, nome2));
+    return 0;
 }
