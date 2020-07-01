@@ -17,7 +17,7 @@
             <div class="card-body">
             <form class="form-horizontal" action="createCat.php" method="post">
 
-                <div class="control-group <?php echo !empty($CatCodigoErro)?'error ' : '';?>">
+                <div class="control-group <?php echo !empty($CliCodigoErro)?'error ' : '';?>">
                     <label class="control-label">Código</label>
                     <div class="controls">
                         <input size="50" class="form-control" name="CatCodigo" type="text" placeholder="Código" required="" value="<?php echo !empty($CatCodigo)?$CatCodigo: '';?>">
@@ -27,7 +27,7 @@
                     </div>
                 </div>
 
-                <div class="control-group <?php echo !empty($CatNomeErro)?'error ' : '';?>">
+                <div class="control-group <?php echo !empty($CliNomeErro)?'error ' : '';?>">
                     <label class="control-label">Nome</label>
                     <div class="controls">
                         <input size="50" class="form-control" name="CatNome" type="text" placeholder="Nome" required="" value="<?php echo !empty($CatNome)?$CatNome: '';?>">
@@ -37,8 +37,8 @@
                     </div>
                 </div>
 
-                <div class="control-group <?php echo !empty($CatGrupoErro)?'error ': '';?>">
-                    <label class="control-label">Grupo</label>
+                <div class="control-group <?php echo !empty($CliCPFErro)?'error ': '';?>">
+                    <label class="control-label">CPF</label>
                     <div class="controls">
                         <input size="80" class="form-control" name="CatGrupo" type="text" placeholder="Grupo" required="" value="<?php echo !empty($CatGrupo)?$CatGrupo: '';?>">
                         <?php if(!empty($CatGrupoErro)): ?>
@@ -47,12 +47,30 @@
                     </div>
                 </div>
 
-                <div class="control-group <?php echo !empty($CatSubGrupoErro)?'error ': '';?>">
-                    <label class="control-label">SubGrupo</label>
+                <div class="control-group <?php echo !empty($CliCNPJErro)?'error ': '';?>">
+                    <label class="control-label">CNPJ</label>
                     <div class="controls">
                         <input size="35" class="form-control" name="CatSubGrupo" type="text" placeholder="SubGrupo" required="" value="<?php echo !empty($CatSubGrupo)?$CatSubGrupo: '';?>">
                         <?php if(!empty($CatSubGrupoErro)): ?>
                             <span class="help-inline"><?php echo $CatSubGrupoErro;?></span>
+                            <?php endif;?>
+                    </div>
+                </div>
+                <div class="control-group <?php echo !empty($CliEnderecoErro)?'error ': '';?>">
+                    <label class="control-label">Endereço</label>
+                    <div class="controls">
+                        <input size="35" class="form-control" name="CatSubGrupo" type="text" placeholder="SubGrupo" required="" value="<?php echo !empty($CatSubGrupo)?$CatSubGrupo: '';?>">
+                        <?php if(!empty($CatSubGrupoErro)): ?>
+                            <span class="help-inline"><?php echo $CatSubGrupoErro;?></span>
+                            <?php endif;?>
+                    </div>
+                </div>
+                <div class="control-group <?php echo !empty($CliBairroErro)?'error ': '';?>">
+                    <label class="control-label">Bairro</label>
+                    <div class="controls">
+                        <input size="35" class="form-control" name="CatSubGrupo" type="text" placeholder="SubGrupo" required="" value="<?php echo !empty($CliBairro)?$CliBairro: '';?>">
+                        <?php if(!empty($CliBairroErro)): ?>
+                            <span class="help-inline"><?php echo $CliBairroErro;?></span>
                             <?php endif;?>
                     </div>
                 </div>
