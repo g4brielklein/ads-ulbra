@@ -23,10 +23,7 @@
                     <a href="createCat.php" class="btn btn-success">Adicionar Categoria</a>
                     <a href="createProd.php" class="btn btn-success">Adicionar Produto</a>
                 </p>
-                <p>
-                <br><br><br>
-                <a href="vendas.php" class="btn btn-primary">Realizar Venda</a>
-                </p>
+                
                 <table class="table table-striped">
                     <thead>
                         <tr>
