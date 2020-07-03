@@ -61,7 +61,7 @@
                     <br/>
 
                     <button type="submit" class="btn btn-success">Adicionar</button>
-                    <a href="categorias.php" type="btn" class="btn btn-default">Voltar</a>
+                    <a href="index.php" type="btn" class="btn btn-default">Voltar</a>
 
                 </div>
             </form>
