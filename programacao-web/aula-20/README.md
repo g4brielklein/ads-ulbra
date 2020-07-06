@@ -21,3 +21,5 @@ $dbUsuario = 'usuarioDoMysql'
 $dbSenha 'senhaDoUsuario'
 
 ```
+
+Projeto hospedado - Link para acesso: http://gabrielklein.epizy.com
