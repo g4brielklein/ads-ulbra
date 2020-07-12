@@ -1,3 +1,9 @@
+/* 
+Crie um programa que calcula o comprimento de uma string de duas formas usando a função
+strlen e outra não usando.
+*/
+// Gabriel Klein
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -11,7 +17,7 @@ int contar(char *str) {
 
 int main() {
 	char nome[50];
-	int comprimento, quantid; 
+	int comprimento, quant; 
 	
 	
 	printf("Digite seu nome: ");
@@ -24,8 +30,8 @@ int main() {
 	
 	// Retorna o comprimento da string NAO utilizando a funcao strlen
 	printf("\n\nComprimento da string NAO utilizando a funcao strlen: ");
-	quantid = contar(nome);
-	printf("%d", quantid);
+	quant = contar(nome);
+	printf("%d", quant);
 	return 0;
 }
 
