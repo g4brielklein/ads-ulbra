@@ -1,59 +1,73 @@
-create table tbdestino (
-  pkcodigodestino integer not null,
-  nomedestino varchar(20) not null
-);
+create table tbDestino (
+  pkCodDest integer not null,
+  nomeDest varchar(100) not null unique,
+  constraint tbDestino_pkCodDest primary key(pkCodDest)
+)
 
-alter table tbdestino
-  add constraint tbdestinopk primary key(pkcodigodestino);
+create table tbAviao (
+  pkCodAviao integer not null,
+  anoFabAviao integer not null,
+  modeloAviao varchar(50) not null,
+  numVoos integer constraint check_numVoos check(numVoos>=0 and numVoos<=4000),
+  constraint tbAviao_pkCodAviao primary key(pkCodAviao)
+)
 
-create table tbaviao (
-  pkcodigoaviao integer not null,
-  anofabaviao date not null,
-  modeloaviao varchar(30),
-  numvoosrealizados integer,
-  numpoltronas integer,
-);
+create table tbVoo (
+  pkNumVoo integer not null,
+  origemVoo varchar(100) not null unique,
+  fkDestVoo varchar(100) not null unique,
+  dataHoraSaida timestamp not null,
+  dataHoraChegada timestamp not null,
+  numPoltronas integer default 120,
+  lugaresOcupados integer default 0,
+  check(lugaresOcupados < numPoltronas),
+  constraint tbVoo_pkNumVoo primary key(pkNumVoo)
+)
 
-alter table tbaviao add constraint tbaviaopk primary key(pkcodigoaviao); 
+alter table tbVoo add constraint tbVoo_fkDestVoo foreign key(fkDestVoo)
+  references tbDestino(nomeDest) on delete cascade
+  
+create table tbCliente (
+  pkCodCli integer not null,
+  nomeCli varchar(50) not null,
+  enderecoCli varchar(100),
+  bairroCli varchar(100),
+  idadeCli integer,
+  CpfCli integer not null unique,
+  sexo varchar(1) not null constraint check_sexo check(sexo in('M','F')),
+  nomeMaeCli varchar(50),
+  qtdReservas integer default 0 constraint check_qtdReservas check(qtdReservas >= 0),
+  qtdCancel integer default 0 constraint check_qtdCancel check(qtdCancel >= 0),
+  constraint tbCliente_pkCodCli primary key(pkCodCli)
+)
 
-create table tbvoo (
-  pknumerovoo integer not null,
-  origemvoo varchar(100) not null,
-  datasaida date,
-  datasaida time,
-  datachegada date,
-  datachegada time,
-  numlugaresocupados integer,
-);
+create table tbPassagem (
+  pkCodPass integer not null,
+  fkCodCli integer not null,
+  fknumVoo integer not null,
+  numPoltrona integer not null,
+  status integer not null,
+  constraint tbPassagem_pkCodPass primary key(pkCodPass)
+)
 
-alter table tbclassificacao add constraint tbvoopk primary key(pknumerovoo);
+alter table tbPassagem add constraint tbPassagem_fkCodCli foreign key(fkCodCli)
+  references tbCliente(pkCodCli) on delete cascade
+  
+begin transaction
+insert into tbPassagem(pkCodPass, fkCodCli, fknumVoo, numPoltrona, status) values (1, 1, 1, 1, 0);
+update tbVoo set lugaresOcupados = lugaresOcupados + 1 where pkNumVoo = 1;
+update tbCliente set qtdReservas = qtdReservas + 1 where pkCodCli = 1;
+commit;
 
-create table tbreserva (
-  pkcodigoreserva integer not null,
-  numpoltronas integer,
-);
+begin transaction
+insert into tbPassagem(pkCodPass, fkCodCli, fknumVoo, numPoltrona, status) values (2, 2, 1, 2, 0);
+savepoint s1;
+update tbVoo set lugaresOcupados = lugaresOcupados + 1 where pkNumVoo = 1;
+update tbCliente set qtdReservas = qtdReservas + 1 where pkCodCli = 1;
+rollback;
+update tbVoo set lugaresOcupados = lugaresOcupados - 1 where pkNumVoo = 1;
+update tbCliente set qtdReservas = qtdReservas - 1 where pkCodCli = 1;
+update tbCliente set qtdCancel = qtdCancel + 1 where pkCodCli = 1;
+commit;
 
-alter table tbreserva add constraint tbreservapk primary key(pkcodigoreserva);
-
-create table tbcliente (
-  pkcpfcli integer not null,
-  nomecli varchar(50),
-  enderecocli varchar(50),
-  bairrocli varchar(50),
-  idadecli integer,
-  sexocli char,
-  nomedamaecli varchar(50),
-  qtdreservas integer,
-  qtdcancelamentos integer
-);
-
-alter table tbcliente add constraint tbclientepk primary key(pkcpfcli);
-
-create table tbpassageiro (
-  pkcpfpass integer not null,
-  nomepass varchar(30) not null,
-  idadepass integer,
-  status integer,
-);
-
-alter table tbpassageiro add constraint tbpassageiropk primary key(pkcpfpass);
+  
