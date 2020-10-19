@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
+
 struct stNo {
 	int info;
 	struct stNo *ant,*pos;
@@ -144,4 +145,3 @@ main() {
     	}
    }while (Menu!='S');
 }
-
