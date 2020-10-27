@@ -17,17 +17,17 @@ struct stNo *cria_no() {
 
 void inserirFim(struct stNo **dI,struct stNo **dF,int n){
 	struct stNo *p,*q;
-	if(*dI==NULL){ //vazio vazia
+	if(*dI==NULL){
 	p = cria_no();
 	*dI = p;
 	p->ant = NULL;
 	p->pos = NULL;
 	p->info = n;
 	}else{
-		p=*dI;// 1000
+		p=*dI;
 		while(p->pos!=NULL)
-			p=p->pos;// posiciona no final da lista
-		q = cria_no();//2000
+			p=p->pos;
+		q = cria_no();
 		p->pos = q;
 		q->pos = NULL;
 		q->ant = p;
@@ -37,7 +37,7 @@ void inserirFim(struct stNo **dI,struct stNo **dF,int n){
 
 void inserirIni(struct stNo **dI,struct stNo **dF,int n){
 	struct stNo *p,*q;
-	if(*dI==NULL){ //lista vazia
+	if(*dI==NULL){
 		p = cria_no();
 		*dI = p;
 		p->pos = NULL;
