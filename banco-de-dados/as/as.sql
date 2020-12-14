@@ -19,7 +19,7 @@ create table tbproprietario (
   cidadepro varchar(20),
   numerocontratosativos integer,
   constraint tbproprietario_pk primary key(pkcodpro)
-);
+);s
 
 create table tbcontrato (
   pkcodcont integer not null,
@@ -51,6 +51,85 @@ references tbcontrato(pkcodcont);
 
 alter table tbrelcontpert add constraint tbrelcontpert_fk2 foreign key(fkcodpert)
 references tbpertences(pkcodpert);
+
+create or replace
+trigger tbcontrato_adiu
+after insert or update or delete on tbcontrato
+for each row
+
+begin
+
+  if (inserting) and (:new.statuscont=1) then
+    update tbproprietario set numerocontratosativos = numerocontratosativos + 1
+      where pkcodpro =: new.fkcodpro;
+  end if;
+  
+  if (deleting) and (:old.statuscont=1) then
+    update tbproprietario set numerocontratosativos = numerocontratosativos - 1
+      where pkcodpro =: old.fkcodpro;
+  end if;
+  
+  
+  
+  if (updating) then
+  
+    if (:old.statuscont<>:new.statuscont) then
+      if (:old.fkcodpro=:new.fkcodpro) then
+        if(:new.statuscont=1) then
+          update tbproprietario set numerocontratosativos = numerocontratosativos + 1
+            where pkcodpro =: new.fkcodpro;
+        else
+          update tbproprietario set numerocontratosativos = numerocontratosativos - 1
+            where pkcodpro =: new.fkcodpro;
+        end if; -- fim do status = 1
+      else -- do proprietário
+        if(:new.statuscont=1) then
+          update tbproprietario set numerocontratosativos = numerocontratosativos + 1
+            where pkcodpro =: new.fkcodpro;
+        else
+          update tbproprietario set numerocontratosativos = numerocontratosativos - 1
+            where pkcodpro =: new.fkcodpro;
+        end if; -- fim do status = 1
+      end if;
+      
+    end if;
+  
+  end if;
+  
+end;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
