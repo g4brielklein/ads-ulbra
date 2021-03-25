@@ -11,9 +11,4 @@ fun main() {
     for (item in strings) {
         println(item.toUpperCase())
     }
-    
-    for (item in strings) {
-        println(item.toLowerCase())
-    }
-    
 }
