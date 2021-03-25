@@ -15,8 +15,10 @@ fun main() {
     matriz[2][1] = 8
     matriz[2][2] = 9
 
-    for () {
-
+    for ((linha, linhaArray) in matriz.withIndex()) {
+        for ((coluna, valor) in linhaArray.withIndex()) {
+            println("[$linha][$coluna] - ${matriz[linha][coluna]} == $valor")
+        }
     }
 
 }
