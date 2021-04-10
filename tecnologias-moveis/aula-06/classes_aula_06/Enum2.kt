@@ -1,0 +1,18 @@
+package classes
+
+//vai receber 3 atributos
+enum class DiaSemana2 (val id: Int, val nome:String, val util:Boolean){
+    DOMINGO(1,"Domingo", false),// atributos associados
+    SEGUNDA(2,"Segunda", true),
+    TERCA(3,"Terça",true),
+    QUARTA(4,"Quarta",true),
+    QUINTA(5,"Quinta", true),
+    SEXTA(6, "Sexta", true),
+    SABADO(7,"Sábado",false)
+}
+
+fun main() {
+    for(dia in DiaSemana2.values()){
+        println("${dia.nome} é um dia ${if(dia.util) "útil" else "do fim de semana"}")
+    }
+}
