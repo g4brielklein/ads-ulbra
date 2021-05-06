@@ -1,0 +1,23 @@
+.canvas {
+    margin: 0 auto;
+    border:1px solid #000000;
+}
+
+.celula {
+    height: 40px;
+    width: 40px;
+    text-align: center;
+}
+.celula-rua {
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    background-color: dimgrey;
+}
+
+.celula-deposito {
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    background-color: gold;
+}
