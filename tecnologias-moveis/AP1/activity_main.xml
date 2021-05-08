@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    android:background="@color/gray">
+
+    <EditText
+        android:id="@+id/peso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:hint="Peso"
+        android:textColorHint="@color/dark_blue"
+        android:inputType="number"
+        android:gravity="left"
+        android:padding="20dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_centerVertical="true"/>
+
+    <EditText
+        android:id="@+id/altura"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:inputType="numberDecimal"
+        android:gravity="left"
+        android:hint="Altura"
+        android:textColorHint="@color/dark_blue"
+        android:padding="20dp"
+        android:layout_below="@+id/peso"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_centerVertical="true"/>
+
+    <Button
+        android:id="@+id/bt_calcula"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:backgroundTint="@color/light_blue"
+        android:text="Calcular IMC"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:padding="15dp"
+        />
+
+    <TextView
+        android:id="@+id/textFinal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:gravity="center"
+        android:textSize="24sp"
+        android:padding="20dp"
+        android:textColor="@color/dark_blue"
+        android:layout_marginTop="20dp" />
+
+
+
+</LinearLayout>
