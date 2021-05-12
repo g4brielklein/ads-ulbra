@@ -1,79 +1,5 @@
 // define celulas das ruas por onde os agente vão percorrer
-let celulas = [
-    {
-        celula: 1,
-        endereco: 2.0.toFixed(1)
-    },
-    {
-        celula: 2,
-        endereco: 2.1.toFixed(1)
-    },
-    {
-        celula: 3,
-        endereco: 2.2.toFixed(1)
-    },
-    {
-        celula: 4,
-        endereco: 2.3.toFixed(1)
-    },
-    {
-        celula: 5,
-        endereco: 2.4.toFixed(1)
-    },
-    {
-        celula: 6,
-        endereco: 2.5.toFixed(1)
-    },
-    {
-        celula: 7,
-        endereco: 2.6.toFixed(1)
-    },
-    {
-        celula: 8,
-        endereco: 2.7.toFixed(1)
-    },
-    {
-        celula: 9,
-        endereco: 3.7.toFixed(1)
-    },
-    {
-        celula: 10,
-        endereco: 4.7.toFixed(1)
-    },
-    {
-        celula: 11,
-        endereco: 4.6.toFixed(1)
-    },
-    {
-        celula: 12,
-        endereco: 4.5.toFixed(1)
-    },
-    {
-        celula: 13,
-        endereco: 4.4.toFixed(1)
-    },
-    {
-        celula: 14,
-        endereco: 4.3.toFixed(1)
-    },
-    {
-        celula: 15,
-        endereco: 4.2.toFixed(1)
-    },
-    {
-        celula: 16,
-        endereco: 4.1.toFixed(1)
-    },
-    {
-        celula: 17,
-        endereco: 4.0.toFixed(1)
-    },
-    {
-        celula: 18,
-        endereco: 3.0.toFixed(1)
-    }
-    
-]
+let celulas = [2.0.toFixed(1), 2.1.toFixed(1), 2.2.toFixed(1), 2.3.toFixed(1), 2.4.toFixed(1), 2.5.toFixed(1), 2.6.toFixed(1), 2.7.toFixed(1), 3.7.toFixed(1), 4.7.toFixed(1), 4.6.toFixed(1), 4.5.toFixed(1), 4.4.toFixed(1), 4.3.toFixed(1), 4.2.toFixed(1), 4.1.toFixed(1), 4.0.toFixed(1), 3.0.toFixed(1)]
 
 // gera veículos randomicamente na matriz
 const vagas = [1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6]
@@ -81,8 +7,6 @@ let vagaRandomica1 = Math.floor(Math.random() * vagas.length)
 let vagaRandomica2 = Math.floor(Math.random() * vagas.length)
 let vagaRandomica3 = Math.floor(Math.random() * vagas.length)
 let vagaRandomica4 = Math.floor(Math.random() * vagas.length)
-let vagaRandomica5 = Math.floor(Math.random() * vagas.length)
-let vagaRandomica6 = Math.floor(Math.random() * vagas.length)
 
 let vaga1 = document.getElementById((vagas[vagaRandomica1]))
 vaga1.innerHTML = 'V'
@@ -100,30 +24,20 @@ let vaga4 = document.getElementById((vagas[vagaRandomica4]))
 vaga4.innerHTML = 'V'
 vaga4.pago = false
 
-let vaga5 = document.getElementById((vagas[vagaRandomica5]))
-vaga5.innerHTML = 'V'
-vaga5.pago = false
-
-let vaga6 = document.getElementById((vagas[vagaRandomica6]))
-vaga6.innerHTML = 'V'
-vaga6.pago = false
-
 // Percorre as céulas e marca os veículos
-
 for (let i = 0; i < celulas.length; i++) {
     
-    let cima = (document.getElementById(celulas[i].endereco).id - 1.0).toFixed(1)
-    let atual = document.getElementById(celulas[i].endereco).id
-
+    let atual = (document.getElementById(celulas[i])).id
+    let acima = ((document.getElementById(celulas[i])).id - 1).toFixed(1)
 
     setTimeout(function(){ 
 
         // marca celula atual com F
-        document.getElementById(celulas[i].endereco).innerHTML = 'F'
+        document.getElementById(atual).innerHTML = 'F'
 
         // Verifica se a celula de cima é 'V'
-        if (document.getElementById(cima).innerHTML == 'V') {
-            let veiculo = document.getElementById(cima)
+        if (document.getElementById(acima).innerHTML == 'V') {
+            let veiculo = document.getElementById(acima)
             if (veiculo.pago == true) {
                 veiculo.innerHTML = 'VR'
             }
@@ -136,36 +50,38 @@ for (let i = 0; i < celulas.length; i++) {
      }, i*1000);
 
      setTimeout(function(){ 
-        document.getElementById(celulas[i].endereco).innerHTML = ''
+        document.getElementById(atual).innerHTML = ''
      }, i*1050);
-     console.log(i*1050)
 }
 
 for (let j = 0; j < celulas.length; j++) {
     
-    let cima = (document.getElementById(celulas[j].endereco).id - 1.0).toFixed(1)
-    let atual = document.getElementById(celulas[j].endereco).id
+    let atual = (document.getElementById(celulas[j])).id
+    let acima = ((document.getElementById(celulas[j])).id - 1).toFixed(1)
 
     setTimeout(function(){ 
 
         // marca celula atual com F
-        document.getElementById(celulas[j].endereco).innerHTML = 'G'
+        document.getElementById(atual).innerHTML = 'G'
 
         // Verifica se a celula de cima é 'VI'
-        if (document.getElementById(cima).innerHTML == 'VI') {
-            let veiculo = document.getElementById(cima)
-            veiculo.innerHTML = 'L'
+        if (document.getElementById(acima).innerHTML == 'VI') {
+            document.getElementById(acima).innerHTML = 'L'
+            document.getElementById(atual).innerHTML = 'GVI'
+            for (x = j; x < celulas.length; x++) {
+                let atualX = (document.getElementById(celulas[x])).id
+                let acimaX = ((document.getElementById(celulas[x])).id - 1).toFixed(1)
+                
+                setTimeout(function(){ 
+                
+                    document.getElementById(atualX).innerHTML = 'GVI'
 
-            let deposito = [5.1, 5.2, 5.3, 5.4, 5.5]
-            if (document.getElementById(deposito[0]).innerHTML == 'L') {
-                document.getElementById(deposito[0]).innerHTML = 'VI'
-            } else if (document.getElementById(deposito[1]).innerHTML == 'L') {
-                document.getElementById(deposito[1]).innerHTML = 'VI'
+                }, (x*1000) + (j*1000) + 17850 );
             }
         }
     }, (j*1000) + 17850 );
 
     setTimeout(function(){ 
-        document.getElementById(celulas[j].endereco).innerHTML = ''
+        document.getElementById(atual).innerHTML = ''
     }, (j*1050) + 17850 );
 }
