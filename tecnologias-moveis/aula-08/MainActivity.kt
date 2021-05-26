@@ -2,8 +2,9 @@ package com.example.calculoaposentadoria
 
 import android.app.Activity
 import android.os.Bundle
+import android.widget.*
 
-class MainActivity : Activity() {
+class MainActivity() : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //definindo o arquivo de layout
@@ -25,6 +26,23 @@ class MainActivity : Activity() {
             this, android.R.layout.simple_spinner_dropdown_item,
             listOf("masculino", "feminino")
         )
-    }
-}
 
+        btn_calcular.setOnClickListener {
+
+            //capturando o sexo selecionado
+            val sexo = spn_sexo.selectedItem as String
+            //capturando a idade digitada
+            val idade = txt_idade.text.toString().toInt()
+            //variável para guardar o resultado do cálculo
+            var resultado = 0
+            //verificando o sexo da pessoa
+            if (sexo == "masculino") {
+                resultado = 65 - idade
+            } else {
+                resultado = 60 - idade
+            }
+            //Atualizando a tela de acordo com o resultado do cálculo
+            txt_resultado.text = "Faltam $resultado anos par você se aposentar."
+        } //btn
+    } // override
+} //class
