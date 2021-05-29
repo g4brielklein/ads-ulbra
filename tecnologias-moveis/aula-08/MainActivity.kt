@@ -7,6 +7,7 @@ import android.widget.*
 class MainActivity() : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         //definindo o arquivo de layout
         setContentView(R.layout.activity_main)
 
@@ -31,18 +32,24 @@ class MainActivity() : Activity() {
 
             //capturando o sexo selecionado
             val sexo = spn_sexo.selectedItem as String
+
             //capturando a idade digitada
             val idade = txt_idade.text.toString().toInt()
+
             //variável para guardar o resultado do cálculo
             var resultado = 0
+
             //verificando o sexo da pessoa
             if (sexo == "masculino") {
                 resultado = 65 - idade
             } else {
                 resultado = 60 - idade
             }
+            
             //Atualizando a tela de acordo com o resultado do cálculo
             txt_resultado.text = "Faltam $resultado anos par você se aposentar."
+        
         } //btn
     } // override
+    
 } //class
