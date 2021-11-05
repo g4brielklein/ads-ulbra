@@ -3,7 +3,6 @@ import 'package:intl/intl.dart';
 import 'package:todo_list_flutter/Models/todo.dart';
 import 'package:todo_list_flutter/Utils/database_helper.dart';
 
-
 class TodoDetail extends StatefulWidget {
   final String appBarTitle;
   final Todo todo;
@@ -45,6 +44,8 @@ class _TodoDetailState extends State<TodoDetail> {
               moveToLastScreen();
             }),
       ),
+
+      // #1 - ELEMENTO TITULO
       body: Padding(
         padding: EdgeInsets.only(top: 15.0, left: 10.0, right: 10.0),
         child: ListView(
@@ -55,7 +56,7 @@ class _TodoDetailState extends State<TodoDetail> {
                 controller: titleController,
                 style: textStyle,
                 onChanged: (value) {
-                  debugPrint('PASSOU');
+                  //debugPrint('');
                   updateTitle();
                 },
                 decoration: InputDecoration(
@@ -65,16 +66,15 @@ class _TodoDetailState extends State<TodoDetail> {
                         borderRadius: BorderRadius.circular(5.0))),
               ),
             ),
-            
 
-            // 3 elemento
+            // #2 - ELEMENTO AUTOR
             Padding(
               padding: EdgeInsets.only(top: 15.0, bottom: 15.0),
               child: TextField(
                 controller: authorController,
                 style: textStyle,
                 onChanged: (value) {
-                  debugPrint('PASSOU2');
+                  //debugPrint('');
                   updateAuthor();
                 },
                 decoration: InputDecoration(
@@ -85,13 +85,14 @@ class _TodoDetailState extends State<TodoDetail> {
               ),
             ),
 
+            // #3 - ELEMENTO EDITORA
             Padding(
               padding: EdgeInsets.only(top: 15.0, bottom: 15.0),
               child: TextField(
                 controller: publisherController,
                 style: textStyle,
                 onChanged: (value) {
-                  debugPrint('PASSOU3');
+                  //debugPrint('');
                   updatePublisher();
                 },
                 decoration: InputDecoration(
@@ -102,40 +103,43 @@ class _TodoDetailState extends State<TodoDetail> {
               ),
             ),
 
+            // #4 - ELEMENTO CONFIRMAÇÃO DE LEITURA
             Padding(
               padding: EdgeInsets.only(top: 15.0, bottom: 15.0),
               child: TextField(
                 controller: readController,
                 style: textStyle,
                 onChanged: (value) {
-                  debugPrint('PASSOU3');
+                  //debugPrint('');
                   updateRead();
                 },
                 decoration: InputDecoration(
-                    labelText: 'Lido',
+                    labelText: 'Livro lido? (Sim / Não)',
                     labelStyle: textStyle,
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5.0))),
               ),
             ),
 
-            // quarto Elemento
             Padding(
               padding: EdgeInsets.only(top: 15.0, bottom: 15.0),
               child: Row(
                 children: <Widget>[
+                  // #4 - BOTÃO PARA APAGAR
                   Expanded(
                     child: RaisedButton(
-                      color: Theme.of(context).primaryColorDark,
+                      color: Colors.red,
+                      //color: Theme.of(context).primaryColorDark,
                       textColor: Theme.of(context).primaryColorLight,
                       child: Text(
-                        'Salvar',
+                        'Apagar',
+                        style: TextStyle(color: Colors.white),
                         textScaleFactor: 1.5,
                       ),
                       onPressed: () {
                         setState(() {
-                          debugPrint("Click salvar");
-                          _save();
+                          debugPrint("Delete executado");
+                          _delete();
                         });
                       },
                     ),
@@ -143,18 +147,24 @@ class _TodoDetailState extends State<TodoDetail> {
                   Container(
                     width: 5.0,
                   ),
+
+                  // #4 - BOTÃO PARA SALVAR
                   Expanded(
                     child: RaisedButton(
-                      color: Theme.of(context).primaryColorDark,
+                      color: Colors.green.shade700,
+                      //Style: ButtonStyle(minimumSize: MaterialStateProperty.all(Size(100,100))),
+                      //color: Theme.of(context).primaryColorDark,
                       textColor: Theme.of(context).primaryColorLight,
+
                       child: Text(
-                        'Apagar',
+                        'Salvar',
+                        style: TextStyle(color: Colors.white),
                         textScaleFactor: 1.5,
                       ),
                       onPressed: () {
                         setState(() {
-                          debugPrint("Apagar clicado");
-                          _delete();
+                          debugPrint("Save Executado");
+                          _save();
                         });
                       },
                     ),
@@ -194,19 +204,19 @@ class _TodoDetailState extends State<TodoDetail> {
     todo.date = DateFormat.yMMMd().format(DateTime.now());
     int result;
     if (todo.id != null) {
-      // Caso 1: Atualizar
+      // ATUALIZAÇÃO
       result = await helper.updateTodo(todo);
     } else {
-      // Caso 2: Inserir
+      // INSERÇÃO
       result = await helper.insertTodo(todo);
     }
 
     if (result != 0) {
-      // Succeso
-      _showAlertDialog('Status', 'Salvo com sucesso $result');
+      // MENSAGEM DE OK NO SAVE
+      _showAlertDialog('Status', 'Livro "$result" salvo na biblioteca');
     } else {
-      // deu erro
-      _showAlertDialog('Status', 'Erro!');
+      // MENSAGEM DE ERRO NO SAVE
+      _showAlertDialog('Status', 'Erro! Tente novamente!');
     }
   }
 
@@ -214,15 +224,15 @@ class _TodoDetailState extends State<TodoDetail> {
     moveToLastScreen();
 
     if (todo.id == null) {
-      _showAlertDialog('Status', 'Não há nada a deletar');
+      _showAlertDialog('Status', 'Não tem livro para apagar!');
       return;
     }
     int result;
-      result = await helper.deleteTodo(todo.id);
+    result = await helper.deleteTodo(todo.id);
     if (result != 0) {
-      _showAlertDialog('Status', 'Menos uma coisa a fazer!');
+      _showAlertDialog('Status', 'Livro excluído da biblioteca!');
     } else {
-      _showAlertDialog('Status', 'Deu pau!');
+      _showAlertDialog('Status', 'Erro! Tente novamente!');
     }
   }
 

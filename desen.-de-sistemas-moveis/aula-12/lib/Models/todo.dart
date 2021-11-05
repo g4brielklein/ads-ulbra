@@ -6,8 +6,10 @@ class Todo {
   String _read;
   String _date;
 
-  Todo(this._title, this._author, this._publisher, this._read, this._date); // construtor do objeto
-  Todo.comId(this._id, this._title, this._author, this._publisher , this._read, this._date); //construtor nomeado
+  Todo(this._title, this._author, this._publisher, this._read,
+      this._date); // CONTRUTOR OBJETO
+  Todo.comId(this._id, this._title, this._author, this._publisher, this._read,
+      this._date); // CONSTRUTOR NOMEADO
 
   int get id => _id;
 
@@ -44,7 +46,7 @@ class Todo {
   }
 
   Map<String, dynamic> toMap() {
-    //converte um obj para um mapa
+    // CONVERTE UM OBJETO PARA UM MAPA
     var map = Map<String, dynamic>();
     if (id != null) {
       map['id'] = _id;
@@ -58,7 +60,7 @@ class Todo {
   }
 
   Todo.fromMapObject(Map<String, dynamic> map) {
-    //Pega um mapa e convente para um obj.
+    // PEGA O MAPA E CONVERTE PARA OBJETO
     this._id = map['id'];
     this._title = map['title'];
     this.author = map['author'];
